@@ -47,7 +47,7 @@ function reducer(state, action) {
         item.id === action.id ? action.data : item
       });
     case "DELETE":
-      return state.filter((item)=>{item.id !== action.id});
+      return state.filter((item)=>String(item.id) !== String(action.id));
     default:
       return state;
   }
@@ -96,7 +96,7 @@ const onUpdate = (id, title, name, content, createdDate)=>{
      <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/new' element={<New />}/>
-      <Route path='/BoardDetail/:no' element={<BoardDetail />}/>
+      <Route path='/BoardDetail/:id' element={<BoardDetail />}/>
       <Route path='/edit/:no' element={<Edit />}/>
       <Route path='*' element={<NotFound />}/>
      </Routes>
